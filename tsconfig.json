@@ -6,11 +6,12 @@
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
     "noImplicitReturns": true,
-    "jsx": "react-jsx",
+    "jsx": "react",
     "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
+  "files": ["./figma.d.ts"],
   "exclude": [
     "node_modules"
   ]
