@@ -7,12 +7,6 @@
     "downlevelIteration": true,
     "noImplicitReturns": true,
     "jsx": "react-jsx",
-    /*
-    "typeRoots": [
-      "./node_modules/@types",
-      "./node_modules/@figma"
-    ],
-    */
     "strict": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true
