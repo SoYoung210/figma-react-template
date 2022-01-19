@@ -6,8 +6,7 @@ const ROOT = path.resolve(__dirname, '..')
 const packageJSON = JSON.parse(fs.readFileSync(path.resolve(ROOT, process.cwd(), 'package.json'), 'utf8'))
 
 const config = {
-  entryPoints: ['src/index.tsx'],
-  outdir: path.resolve(ROOT, './build/static/js'),
+  entryPoints: ['src/index.tsx', 'src/code.ts'],
   loader: {
     '.ts': 'ts',
     '.tsx': 'tsx'
@@ -28,7 +27,7 @@ Promise.all([
     outdir: 'dist',
   }),
 ]).then(() => {
-  fs.copyFile(path.resolve(ROOT, './public/index.html'), path.resolve(ROOT, './dist/index.html'), (err) => {
+  fs.copyFile(path.resolve(ROOT, './public/ui.html'), path.resolve(ROOT, './dist/ui.html'), (err) => {
     if (err) return console.error(err);
       console.log("success!");
       return null;
