@@ -5,7 +5,7 @@
   "main": "code.js",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build:type": "tsc --emitDeclarationOnly --declaration --declarationDir dist",
+    "start": "webpack --watch --mode=development",
     "build": "webpack --mode=production"
   },
   "repository": {
