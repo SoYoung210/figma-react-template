@@ -1,7 +1,7 @@
+const path = require('path');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
-
-const path = require('path');
 
 module.exports = (env, argv) => ({
   // This is necessary because Figma's 'eval' works differently than normal eval
@@ -14,8 +14,25 @@ module.exports = (env, argv) => ({
 
   module: {
     rules: [
-      // TODO: babel-loader
-      { test: /\.tsx?$/, use: 'ts-loader', exclude: /node_modules/ },
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-react'],
+              [
+                '@babel/preset-env',
+                {
+                  targets: 'defaults',
+                },
+              ],
+              ['@babel/preset-typescript'],
+            ],
+          },
+        },
+      },
       {
         test: /\.css$/,
         use: [
@@ -34,7 +51,9 @@ module.exports = (env, argv) => ({
       },
     ],
   },
-  resolve: { extensions: ['.tsx', '.ts', '.jsx', '.js'] },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
 
   output: {
     filename: '[name].js',
@@ -47,7 +66,7 @@ module.exports = (env, argv) => ({
       inlineSource: '.(js)$',
       chunks: ['ui'],
       inject: 'body',
-      cache: 'false'
+      cache: 'false',
     }),
     new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/ui/]),
   ],
